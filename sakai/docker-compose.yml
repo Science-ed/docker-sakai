@@ -16,6 +16,7 @@ app:
    - ./sakai.quartz.properties:/opt/tomcat/sakai/sakai.quartz.properties
    - ./log4j.properties:/opt/tomcat/sakai/log4j.properties
    - ./local.properties:/opt/tomcat/sakai/local.properties
+   - ./override:/opt/tomcat/sakai/override
   command: /opt/tomcat/bin/catalina.sh jpda run
   environment:
    # In development this means we can read files without anything special
