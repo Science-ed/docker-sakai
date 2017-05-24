@@ -39,14 +39,14 @@ COPY server.xml /opt/tomcat/conf/server.xml
 # Speedup startup
 COPY context.xml /opt/tomcat/conf/context.xml
 
-# /opt/tomcat/sakai/logs is for Apache James logging.
 RUN mkdir -p /opt/scripts && \
   mkdir -p /opt/tomcat/sakai/files && \
   mkdir -p /opt/tomcat/sakai/deleted && \
-  mkdir -p /opt/tomcat/sakai/logs
+  mkdir -p /opt/tomcat/sakai/archive && \
+  mkdir -p /opt/tomcat/sakai/archive-unzip
 
 # The logs directory needs to be writable by tomcat
-RUN chown sakai /opt/tomcat/logs /opt/tomcat/temp /opt/tomcat/work /opt/tomcat/sakai/files /opt/tomcat/sakai/deleted /opt/tomcat/sakai/logs /opt/tomcat/webapps && \
+RUN chown sakai /opt/tomcat/logs /opt/tomcat/temp /opt/tomcat/work /opt/tomcat/sakai/files /opt/tomcat/sakai/deleted /opt/tomcat/sakai/archive /opt/tomcat/sakai/archive-unzip /opt/tomcat/webapps && \
   find /opt/tomcat/conf/ -type f| xargs chmod 640 && \
   mkdir -p /opt/tomcat/conf/Catalina && chown sakai /opt/tomcat/conf/Catalina && \
   chgrp sakai -R /opt/tomcat/conf && chmod 755 /opt/tomcat/conf && \
